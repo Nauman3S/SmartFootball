@@ -78,10 +78,34 @@ A step by step series that covers how to get the Firmware running.
   - sudo apt-get upgrade
   - sudo apt install python3-pip
   - pip3 install paho-mqtt
+  - pip3 install imusensor
   - sudo adduser $USER dialout
-  - sudo cp siSensor.service /lib/systemd/system/
-  
+  - sudo cp imuSrv.service /lib/systemd/system/
+  - {TCP Tunnel}
+  - sudo apt-get install motion
 ```
+After the installation is complete, type in the command `sudo nano /etc/motion/motion.conf` and press enter.
+
+Then you have to change some settings in the `.conf` file. It might be difficult sometimes to find the settings but use 'ctrl + w' to find it. So follow the steps:
+
+1.  Make sure 'daemon' is ON.
+2.  Set 'framerate' anywhere in between 1000 to 1500.
+3.  Keep 'Stream_port' to 8081.
+4.  'Stream_quality' should be 100.
+5.  Change 'Stream_localhost' to OFF.
+6.  Change 'webcontrol_localhost' to OFF.
+7.  Set 'quality' to 100.
+8.  Set 'width' & 'height' to 640 & 480.
+9.  Set 'post_capture' to 5.
+10. Press ctrl + x to exit. Type y to save and enter to confirm.
+11. Again type in the command `sudo nano /etc/default/motion` and press enter.
+
+12. Set ' start_motion_daemon ' to yes. Save and exit.
+
+Then do:
+
+`sudo service motion restart`
+`sudo motion` 
 
 Once done, import `flows.json` to the nodered, form `dashboard` folder.
 ### Installing and Configuring Node-RED on Raspberry Pi
@@ -103,36 +127,10 @@ Open the terminal and execute the following commands
 - sudo systemctl enable mosquitto.service
 - mosquitto -v
 ```
-##### Installing and Configuring NodeRED
-Open the terminal and execute the following commands
-
-```
-- bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
-- sudo systemctl enable nodered.service
-- npm install node-red-dashboard 
-- sudo npm install node-red-dashboard
-- sudo systemctl restart nodered.service
-```
-Then open NodeRED in your raspberry pi or using any other device which is connected to the same network
-as your Raspberry Pi is.
-In the browser you can type http://raspberrypi.local:1880 to open the node-red
-
-- Once node-red is opened, click on the menu button on the top left corner of the app and click on import.
-- Click on `select file to import` and select flows.json present in the `dashboard` directory of this repo.
-- After flows are imported, click on Deploy button on the top of the screen to save the changes.
-- You can access the Dashboard using http://raspberrypi.local:1880/ui
-
-
 
 1.  To run the program just restart the raspberry pi.
 
 This program make use of MQTT to communicate with the webapp.
-
-  ```diff
-  + broker used is mosquitto, deployed on the Raspberry Pi.
-  + vending can be done by publishing an ammount to mdb/invoke topic
-  ```
-
 
 ## ⛏️ Testing <a name = "test"></a>
 
@@ -141,12 +139,12 @@ This program make use of MQTT to communicate with the webapp.
 
 ## 🔌 Circuit Diagram <a name = "circuit"></a>
 
-![GPIOsRPi](Circuit/Circuit.png)
+![GPIOsRPi](Circuit/Circuit_bb.png)
 
 
-* RPi 3,4 GPIOs Pinout
+* RPi Zero 2 W GPIOs Pinout
 
-![GPIOsRPi](Circuit/rpi34.jpg)
+![GPIOsRPi](Circuit/pinout.jpg)
 
 
 
@@ -158,17 +156,17 @@ This program make use of MQTT to communicate with the webapp.
 Pins connections
 ```
 
-| Si7021 | Raspberry Pi |
+| MPU9250 | Raspberry Pi |
 | :--- | :--- |
 | `SDA` | `2` | 
 | `GND` | `GND` |
 | `3V3` | `3V3` | 
 | `SCL` | `3` | 
 
-| Relay Pins | Raspberry Pi |
+| Button Pins | Raspberry Pi |
 | :--- | :--- |
-| `VCC` | `5V` | 
-| `GND` | `GND` | 
+| `Pin 1` | `5V` | 
+| `Pin 2` | `GND` | 
 | `P1` | `29` | 
 | `P2` | `31` | 
 | `P2` | `33` | 

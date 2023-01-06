@@ -3,7 +3,7 @@ import time
 import random
 import threading
 from datetime import datetime
-from si7021 import *
+from mpu9250 import *
 
 # === Threads for the app ===
 
@@ -57,9 +57,10 @@ class MQTTThread(threading.Thread):
         print( self._args )
         while 1:
             dataArr=getData() 
-            self.client.publish('data/humid',dataArr[0])
-            self.client.publish('data/tempC',dataArr[1])
-            self.client.publish('data/tempF',dataArr[2])
+            self.client.publish('data/acc',dataArr[0][0]+";"+dataArr[0][1]+";"+dataArr[0][2])
+            self.client.publish('data/gyro',dataArr[1][0]+";"+dataArr[1][1]+";"+dataArr[1][2])
+            self.client.publish('data/mag',dataArr[2][0]+";"+dataArr[2][1]+";"+dataArr[2][2])
+            self.client.publish('data/ypr',dataArr[3][0]+";"+dataArr[3][1]+";"+dataArr[3][2])
                 
             time.sleep(self._args[1])
         self._target(*self._args)

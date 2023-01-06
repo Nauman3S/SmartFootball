@@ -176,31 +176,26 @@ Pins connections
 
 ## Dashboard <a name = "dashboard"></a>
 
-You can use the dashboard with the link below:
-
-[https://maggoty-seaurchin-3431.dataplicity.io/ui](https://maggoty-seaurchin-3431.dataplicity.io/ui)
-![dash](artwork/db1.png)
-
 
   ```diff
-  - The dashboard is running on Raspberry Pi. 
+  - In progress.
   ```
 
-  ![db1](artwork/db1.png)
-  ![db2](artwork/db2.png)
-  ![db3](artwork/db3.png)
-  ![db4](artwork/db4.png)
-  ![db5](artwork/db5.png)
+You can use the dashboard with the link below:
+
+[)
+![dash](artwork/)
+
 
 
 ## Components Used
 
-1.  [Raspberry Pi](https://www.amazon.com/CanaKit-Raspberry-Micro-Supply-Listed/dp/B01C6FFNY4/ref=sr_1_1?dchild=1&keywords=raspberry+pi+3&qid=1632029848&sr=8-1)
-2. USB WebCam
-3. Si7021 Temperature and Humidity Sensor
-4. 4 Channel Relay Module
-5. Fan
-6. Lights
+1.  [Raspberry Pi Zero 2 W](https://www.amazon.com/CanaKit-Raspberry-Wireless-Complete-Starter/dp/B07CMVDHWB/ref=sr_1_4?crid=3HHNCDL4Q4CQ9&keywords=raspberry+pi+zero+2+w&qid=1672982210&sprefix=raspberry+pi+zero+2+w%2Caps%2C194&sr=8-4)
+2. [Raspberry Pi Cam](https://www.amazon.com/Raspberry-Pi-Camera-Module-Megapixel/dp/B01ER2SKFS/ref=sr_1_4_mod_primary_new?crid=2OZKT6QUT4DRU&keywords=raspberry+pi+cam&qid=1672982230&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=raspberry+pi+cam%2Caps%2C143&sr=8-4)
+3. [IMU MPU9250](https://www.amazon.com/MPU9250-Compass-Acceleration-Gyroscope-Attitude/dp/B09GCF394V/ref=sr_1_2?crid=2LK80QR26XRMQ&keywords=mpu9250&qid=1656626270&sprefix=mpu9250%2Caps%2C177&sr=8-2)
+
+4.  [Small Push Button](https://www.amazon.com/BOJACK-Tactile-Pushbutton-Switches-Momentary/dp/B07ZN1N299/ref=sr_1_7?crid=3AGU6V06CNS03&keywords=small+push+button+two+pin&qid=1656626603&sprefix=small+push+button+two+pin%2Caps%2C175&sr=8-7)
+
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
